@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Simple Website</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f7f7f7;
+            padding: 40px;
+            text-align: center;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            width: 300px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to My Static Website</h1>
+
+    <div class="box">
+        <h3>Live Clock</h3>
+        <p id="clock">--:--:--</p>
+
+        <h3>Your Visit Count</h3>
+        <p id="counter">0</p>
+    </div>
+
+    <script>
+        // Clock
+        function updateClock() {
+            const now = new Date();
+            document.getElementById("clock").textContent =
+                now.toLocaleTimeString();
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Visit counter
+        let visits = localStorage.getItem("visits");
+        if (!visits) visits = 0;
+        visits++;
+        localStorage.setItem("visits", visits);
+        document.getElementById("counter").textContent = visits;
+    </script>
+
+</body>
+</html>
+
